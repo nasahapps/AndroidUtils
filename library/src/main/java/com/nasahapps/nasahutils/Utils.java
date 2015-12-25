@@ -7,10 +7,12 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Point;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 
 /**
@@ -150,6 +152,24 @@ public class Utils {
         if (activity != null) {
             return getScreenDimensions(activity).y;
         } else return 0;
+    }
+
+    /**
+     * Get the overall parent view of this activity, since there's no getView() method like Fragments have
+     *
+     * @param a Activity
+     * @return the topmost parent view
+     */
+    @Nullable
+    public static View getActivityView(Activity a) {
+        if (a != null) {
+            View content = a.findViewById(android.R.id.content);
+            if (content != null && content instanceof ViewGroup && ((ViewGroup) content).getChildCount() > 0) {
+                return ((ViewGroup) content).getChildAt(0);
+            }
+        }
+
+        return null;
     }
 
 }
