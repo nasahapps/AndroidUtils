@@ -7,6 +7,8 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.util.TypedValue;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 /**
  * Created by Hakeem on 7/26/15.
@@ -84,6 +86,28 @@ public class Utils {
                 Intent.FLAG_ACTIVITY_CLEAR_TASK |
                 Intent.FLAG_ACTIVITY_NEW_TASK);
         return i;
+    }
+
+    /**
+     * Hides the keyboard if showing
+     *
+     * @param c    Context
+     * @param view the view that currently has focus and requires the keyboard's attention, e.g. an EditText
+     */
+    public static void hideKeyboard(Context c, View view) {
+        InputMethodManager imm = (InputMethodManager) c.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    /**
+     * Shows the keyboard if hidden
+     *
+     * @param c    Context
+     * @param view the view that would call for the keyboard to appear, e.g. an EditText
+     */
+    public static void showKeyboard(Context c, View view) {
+        InputMethodManager imm = (InputMethodManager) c.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInputFromInputMethod(view.getWindowToken(), InputMethodManager.SHOW_FORCED);
     }
 
 }
