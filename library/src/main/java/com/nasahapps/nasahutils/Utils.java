@@ -1,12 +1,15 @@
 package com.nasahapps.nasahutils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Point;
 import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -108,6 +111,45 @@ public class Utils {
     public static void showKeyboard(Context c, View view) {
         InputMethodManager imm = (InputMethodManager) c.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInputFromInputMethod(view.getWindowToken(), InputMethodManager.SHOW_FORCED);
+    }
+
+    /**
+     * Get the screen dimensions in pixels
+     *
+     * @param a Activity
+     * @return a Point, where the width is Point.x and height is Point.y
+     */
+    public static Point getScreenDimensions(Activity a) {
+        if (a != null) {
+            Display d = a.getWindowManager().getDefaultDisplay();
+            Point size = new Point();
+            d.getSize(size);
+            return size;
+        } else return new Point();
+    }
+
+    /**
+     * Get the screen width
+     *
+     * @param activity Activity
+     * @return screen width in pixels
+     */
+    public static int getScreenWidth(Activity activity) {
+        if (activity != null) {
+            return getScreenDimensions(activity).x;
+        } else return 0;
+    }
+
+    /**
+     * Get the screen height
+     *
+     * @param activity Activity
+     * @return screen height in pixels
+     */
+    public static int getScreenHeight(Activity activity) {
+        if (activity != null) {
+            return getScreenDimensions(activity).y;
+        } else return 0;
     }
 
 }
