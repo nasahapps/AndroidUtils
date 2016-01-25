@@ -62,6 +62,7 @@ public class Utils {
                 .setTitle(title)
                 .setMessage(message)
                 .setPositiveButton(buttonText, onClickListener)
+                .setCancelable(false)
                 .show();
     }
 
