@@ -172,4 +172,15 @@ public class Utils {
         return null;
     }
 
+    /**
+     * Checks if user has an app installed to handle the given Intent
+     *
+     * @param i Intent to start
+     * @param c Context
+     * @return true if user has an app to handle the Intent, false otherwise
+     */
+    public static boolean hasValidAppToOpen(Intent i, Context c) {
+        return i.resolveActivity(c.getPackageManager()) != null;
+    }
+
 }

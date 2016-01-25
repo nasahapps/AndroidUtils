@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 ext {
     PUBLISH_GROUP_ID = 'com.nasahapps.android'
     PUBLISH_ARTIFACT_ID = 'androidutils'
-    PUBLISH_VERSION = '0.0.6'
+    PUBLISH_VERSION = '0.0.7'
 }
 
 android {
@@ -38,4 +38,8 @@ dependencies {
 // To build for jcenter, from the command line do:
 // ./gradlew clean build generateRelease
 apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
+
+androidJavadocs {
+    failOnError false
+}
 
