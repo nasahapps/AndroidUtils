@@ -58,12 +58,16 @@ public class Utils {
 
     public static void showAlert(Context c, String title, String message, String buttonText,
                                  DialogInterface.OnClickListener onClickListener) {
-        new AlertDialog.Builder(c)
-                .setTitle(title)
-                .setMessage(message)
-                .setPositiveButton(buttonText, onClickListener)
-                .setCancelable(false)
-                .show();
+        try {
+            new AlertDialog.Builder(c)
+                    .setTitle(title)
+                    .setMessage(message)
+                    .setPositiveButton(buttonText, onClickListener)
+                    .setCancelable(false)
+                    .show();
+        } catch (Exception e) {
+            // Catching a BadTokenException, which randomly happens sometimes
+        }
     }
 
     /**
