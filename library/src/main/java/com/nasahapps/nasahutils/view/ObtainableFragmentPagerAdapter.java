@@ -1,4 +1,4 @@
-package com.nasahapps.nasahutils.widget;
+package com.nasahapps.nasahutils.view;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
