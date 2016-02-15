@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Point;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -186,6 +188,18 @@ public class Utils {
      */
     public static boolean hasValidAppToOpen(Intent i, Context c) {
         return i.resolveActivity(c.getPackageManager()) != null;
+    }
+
+    /**
+     * Checks if the device is currently connected to the internet
+     *
+     * @param c context
+     * @return true if connected or connecting to the internet
+     */
+    public static boolean isConnectedToInternet(Context c) {
+        ConnectivityManager cm = (ConnectivityManager) c.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = cm.getActiveNetworkInfo();
+        return info != null && info.isConnectedOrConnecting();
     }
 
 }
