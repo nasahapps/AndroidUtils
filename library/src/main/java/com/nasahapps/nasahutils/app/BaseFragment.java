@@ -9,30 +9,39 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import icepick.Icepick;
+import rx.Observable;
+import rx.android.observables.AndroidObservable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by Hakeem on 7/26/15.
  */
 public abstract class BaseFragment extends Fragment {
 
-    protected final String TAG = getClass().getSimpleName();
+    protected String TAG;
 
-    public abstract int getLayoutId();
+    public int getLayoutId() {
+        return 0;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Icepick.restoreInstanceState(this, savedInstanceState);
+        TAG = getClass().getSimpleName();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(getLayoutId(), container, false);
-        ButterKnife.bind(this, v);
-        setRetainInstance(shouldRetainInstance());
-
-        return v;
+        if (getLayoutId() != 0) {
+            View v = inflater.inflate(getLayoutId(), container, false);
+            ButterKnife.bind(this, v);
+            return v;
+        } else {
+            return super.onCreateView(inflater, container, savedInstanceState);
+        }
     }
 
     @Override
@@ -47,7 +56,9 @@ public abstract class BaseFragment extends Fragment {
         ButterKnife.unbind(this);
     }
 
-    protected boolean shouldRetainInstance() {
-        return true;
+    public <T> Observable<T> getObservable(Observable<T> observable) {
+        return AndroidObservable.bindFragment(this, observable)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }

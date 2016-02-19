@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 ext {
     PUBLISH_GROUP_ID = 'com.nasahapps.android'
     PUBLISH_ARTIFACT_ID = 'androidutils'
-    PUBLISH_VERSION = '0.0.10'
+    PUBLISH_VERSION = '0.0.11'
 }
 
 android {
@@ -33,6 +33,7 @@ dependencies {
     compile 'frankiesardo:icepick:3.1.0'
     provided 'frankiesardo:icepick-processor:3.1.0'
     compile 'com.malinskiy:superrecyclerview:1.1.0'
+    compile 'com.netflix.rxjava:rxjava-android:0.20.7'
 }
 
 // To build for jcenter, from the command line do:

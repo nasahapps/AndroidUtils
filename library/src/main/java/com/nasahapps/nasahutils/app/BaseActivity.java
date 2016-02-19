@@ -6,6 +6,10 @@ import android.view.MenuItem;
 
 import butterknife.ButterKnife;
 import icepick.Icepick;
+import rx.Observable;
+import rx.android.observables.AndroidObservable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by Hakeem on 7/26/15.
@@ -14,13 +18,17 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public static String TAG;
 
-    public abstract int getLayoutId();
+    public int getLayoutId() {
+        return 0;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
-        ButterKnife.bind(this);
+        if (getLayoutId() != 0) {
+            setContentView(getLayoutId());
+            ButterKnife.bind(this);
+        }
         Icepick.restoreInstanceState(this, savedInstanceState);
 
         TAG = getClass().getSimpleName();
@@ -39,5 +47,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public <T> Observable<T> getObservable(Observable<T> observable) {
+        return AndroidObservable.bindActivity(this, observable)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }
