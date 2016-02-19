@@ -59,14 +59,24 @@ public class Utils {
     }
 
     public static void showAlert(Context c, String title, String message, String buttonText,
+                                 boolean cancelable,
                                  DialogInterface.OnClickListener onClickListener) {
         try {
-            new AlertDialog.Builder(c)
+            AlertDialog.Builder builder = new AlertDialog.Builder(c)
                     .setTitle(title)
                     .setMessage(message)
-                    .setPositiveButton(buttonText, onClickListener)
-                    .setCancelable(false)
-                    .show();
+                    .setPositiveButton(buttonText, onClickListener);
+            if (cancelable) {
+                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+            } else {
+                builder.setCancelable(false);
+            }
+            builder.show();
         } catch (Exception e) {
             // Catching a BadTokenException, which randomly happens sometimes
         }
