@@ -66,15 +66,21 @@ public class Utils {
                     .setTitle(title)
                     .setMessage(message)
                     .setPositiveButton(buttonText, onClickListener);
-            if (cancelable) {
-                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+            // If there's a click listener for the positive button, we need to know if the dialog
+            // should be cancellable or not
+            // If there's not a click listener, then clicking the positive button would just
+            // close the dialog, negating the need for a cancel button anyway
+            if (onClickListener != null) {
+                if (cancelable) {
+                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-                    }
-                });
-            } else {
-                builder.setCancelable(false);
+                        }
+                    });
+                } else {
+                    builder.setCancelable(false);
+                }
             }
             builder.show();
         } catch (Exception e) {
