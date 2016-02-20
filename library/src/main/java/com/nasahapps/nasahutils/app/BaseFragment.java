@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
-import icepick.Icepick;
 import rx.Observable;
 import rx.android.observables.AndroidObservable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -28,7 +27,6 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Icepick.restoreInstanceState(this, savedInstanceState);
         TAG = getClass().getSimpleName();
     }
 
@@ -42,12 +40,6 @@ public abstract class BaseFragment extends Fragment {
         } else {
             return super.onCreateView(inflater, container, savedInstanceState);
         }
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        Icepick.saveInstanceState(this, outState);
-        super.onSaveInstanceState(outState);
     }
 
     @Override

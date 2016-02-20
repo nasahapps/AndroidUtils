@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 ext {
     PUBLISH_GROUP_ID = 'com.nasahapps.android'
     PUBLISH_ARTIFACT_ID = 'androidutils'
-    PUBLISH_VERSION = '0.0.13'
+    PUBLISH_VERSION = '0.0.14'
 }
 
 android {
@@ -30,8 +30,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.4'
     compile 'com.android.support:design:23.1.1'
     compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'frankiesardo:icepick:3.1.0'
-    provided 'frankiesardo:icepick-processor:3.1.0'
     compile 'com.malinskiy:superrecyclerview:1.1.0'
     compile 'com.netflix.rxjava:rxjava-android:0.20.7'
 }

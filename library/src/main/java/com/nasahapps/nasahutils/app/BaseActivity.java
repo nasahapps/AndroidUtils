@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import butterknife.ButterKnife;
-import icepick.Icepick;
 import rx.Observable;
 import rx.android.observables.AndroidObservable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -29,15 +28,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             setContentView(getLayoutId());
             ButterKnife.bind(this);
         }
-        Icepick.restoreInstanceState(this, savedInstanceState);
 
         TAG = getClass().getSimpleName();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        Icepick.saveInstanceState(this, outState);
     }
 
     @Override
