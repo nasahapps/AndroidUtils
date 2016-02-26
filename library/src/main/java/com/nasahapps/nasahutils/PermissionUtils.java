@@ -113,10 +113,10 @@ public class PermissionUtils {
         ActivityCompat.requestPermissions((Activity) c, permissions, requestCode);
     }
 
-    public static void showSettingsSnackbar(View v, String title) {
+    public static void showSettingsSnackbar(View v, String title, String packageName) {
         if (Utils.isAtApiLevel(Build.VERSION_CODES.M)) {
             final Intent i = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-            i.setData(Uri.parse("package:" + BuildConfig.APPLICATION_ID));
+            i.setData(Uri.parse("package:" + packageName));
             if (Utils.hasValidAppToOpen(i, v.getContext())) {
                 Snackbar.make(v, title, Snackbar.LENGTH_LONG)
                         .setAction("Settings", new View.OnClickListener() {
