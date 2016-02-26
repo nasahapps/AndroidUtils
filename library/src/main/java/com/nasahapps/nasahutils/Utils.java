@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.TypedValue;
 import android.view.Display;
@@ -216,6 +217,35 @@ public class Utils {
         ConnectivityManager cm = (ConnectivityManager) c.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = cm.getActiveNetworkInfo();
         return info != null && info.isConnectedOrConnecting();
+    }
+
+    /**
+     * Tints the Dialog buttons to the primary color of the app.
+     * This is automatically done on 6.0+, so this method is mainly for 5.1 and below.
+     *
+     * @param dialog  the Dialog to tint the buttons of
+     * @param context Context
+     * @return the same Dialog but now with tinted buttons
+     */
+    public static AlertDialog tintDialogButtons(final AlertDialog dialog, final Context context) {
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                if (dialog.getButton(DialogInterface.BUTTON_POSITIVE) != null) {
+                    dialog.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(context, R.attr.colorPrimary));
+                }
+
+                if (dialog.getButton(DialogInterface.BUTTON_NEUTRAL) != null) {
+                    dialog.getButton(DialogInterface.BUTTON_NEUTRAL).setTextColor(ContextCompat.getColor(context, R.attr.colorPrimary));
+                }
+
+                if (dialog.getButton(DialogInterface.BUTTON_NEGATIVE) != null) {
+                    dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(context, R.attr.colorPrimary));
+                }
+            }
+        });
+
+        return dialog;
     }
 
 }
