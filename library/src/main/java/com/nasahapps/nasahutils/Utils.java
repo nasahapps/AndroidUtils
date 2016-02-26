@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.TypedArray;
 import android.graphics.Point;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.support.annotation.AttrRes;
+import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.TypedValue;
 import android.view.Display;
@@ -232,20 +234,42 @@ public class Utils {
             @Override
             public void onShow(DialogInterface dialogInterface) {
                 if (dialog.getButton(DialogInterface.BUTTON_POSITIVE) != null) {
-                    dialog.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(context, R.attr.colorPrimary));
+                    dialog.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(getColorFromAttribute(context, R.attr.colorPrimary));
                 }
 
                 if (dialog.getButton(DialogInterface.BUTTON_NEUTRAL) != null) {
-                    dialog.getButton(DialogInterface.BUTTON_NEUTRAL).setTextColor(ContextCompat.getColor(context, R.attr.colorPrimary));
+                    dialog.getButton(DialogInterface.BUTTON_NEUTRAL).setTextColor(getColorFromAttribute(context, R.attr.colorPrimary));
                 }
 
                 if (dialog.getButton(DialogInterface.BUTTON_NEGATIVE) != null) {
-                    dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(context, R.attr.colorPrimary));
+                    dialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(getColorFromAttribute(context, R.attr.colorPrimary));
                 }
             }
         });
 
         return dialog;
+    }
+
+    /**
+     * Retrieves a color int from an attribute, e.g. R.attr.colorAccent
+     *
+     * @param c   context
+     * @param res attribute referencing the color
+     * @return the color int of the given attribute, or 0x0 (black) if the attribute does not exist
+     * or doesn't reference a color resource
+     */
+    @ColorInt
+    public static int getColorFromAttribute(Context c, @AttrRes int res) {
+        try {
+            TypedValue tv = new TypedValue();
+            TypedArray ta = c.obtainStyledAttributes(tv.data, new int[]{res});
+            int color = ta.getColor(0, 0);
+            ta.recycle();
+            return color;
+        } catch (Exception e) {
+            LogUtils.logE(Utils.class.getSimpleName(), "Error getting color from attribute", e);
+            return 0;
+        }
     }
 
 }

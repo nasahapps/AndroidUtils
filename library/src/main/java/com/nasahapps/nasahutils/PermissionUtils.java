@@ -125,7 +125,7 @@ public class PermissionUtils {
                                 v.getContext().startActivity(i);
                             }
                         })
-                        .setActionTextColor(ContextCompat.getColor(v.getContext(), R.attr.colorAccent))
+                        .setActionTextColor(Utils.getColorFromAttribute(v.getContext(), R.attr.colorAccent))
                         .show();
             }
         }
