@@ -15,9 +15,9 @@ import rx.schedulers.Schedulers;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-    public static String TAG;
+    protected static String TAG;
 
-    public int getLayoutId() {
+    protected int getLayoutId() {
         return 0;
     }
 

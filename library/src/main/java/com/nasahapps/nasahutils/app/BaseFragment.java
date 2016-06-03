@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import rx.Observable;
 import rx.android.observables.AndroidObservable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -20,7 +21,9 @@ public abstract class BaseFragment extends Fragment {
 
     protected String TAG;
 
-    public int getLayoutId() {
+    private Unbinder mUnbinder;
+
+    protected int getLayoutId() {
         return 0;
     }
 
@@ -35,7 +38,7 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (getLayoutId() != 0) {
             View v = inflater.inflate(getLayoutId(), container, false);
-            ButterKnife.bind(this, v);
+            mUnbinder = ButterKnife.bind(this, v);
             return v;
         } else {
             return super.onCreateView(inflater, container, savedInstanceState);
@@ -45,7 +48,9 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+        if (mUnbinder != null) {
+            mUnbinder.unbind();
+        }
     }
 
     public <T> Observable<T> getObservable(Observable<T> observable) {
