@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import butterknife.ButterKnife;
 import rx.Observable;
 import rx.android.observables.AndroidObservable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -26,7 +25,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if (getLayoutId() != 0) {
             setContentView(getLayoutId());
-            ButterKnife.bind(this);
         }
 
         TAG = getClass().getSimpleName();

@@ -7,8 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import rx.Observable;
 import rx.android.observables.AndroidObservable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -20,8 +18,6 @@ import rx.schedulers.Schedulers;
 public abstract class BaseFragment extends Fragment {
 
     protected String TAG;
-
-    private Unbinder mUnbinder;
 
     protected int getLayoutId() {
         return 0;
@@ -38,7 +34,6 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (getLayoutId() != 0) {
             View v = inflater.inflate(getLayoutId(), container, false);
-            mUnbinder = ButterKnife.bind(this, v);
             return v;
         } else {
             return super.onCreateView(inflater, container, savedInstanceState);
@@ -48,9 +43,6 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (mUnbinder != null) {
-            mUnbinder.unbind();
-        }
     }
 
     public <T> Observable<T> getObservable(Observable<T> observable) {
