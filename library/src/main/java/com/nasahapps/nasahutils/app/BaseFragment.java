@@ -40,11 +40,6 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
-
     public <T> Observable<T> getObservable(Observable<T> observable) {
         return AndroidObservable.bindFragment(this, observable)
                 .subscribeOn(Schedulers.newThread())
