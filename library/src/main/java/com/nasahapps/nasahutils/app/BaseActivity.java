@@ -2,6 +2,7 @@ package com.nasahapps.nasahutils.app;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import rx.Observable;
@@ -16,18 +17,18 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected static String TAG;
 
-    protected int getLayoutId() {
-        return 0;
-    }
+    protected Menu mMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getLayoutId() != 0) {
-            setContentView(getLayoutId());
-        }
-
         TAG = getClass().getSimpleName();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        mMenu = menu;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

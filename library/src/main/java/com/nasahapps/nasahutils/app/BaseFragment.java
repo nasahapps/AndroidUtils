@@ -3,9 +3,8 @@ package com.nasahapps.nasahutils.app;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import rx.Observable;
 import rx.android.observables.AndroidObservable;
@@ -18,10 +17,7 @@ import rx.schedulers.Schedulers;
 public abstract class BaseFragment extends Fragment {
 
     protected String TAG;
-
-    protected int getLayoutId() {
-        return 0;
-    }
+    protected Menu mMenu;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,15 +25,10 @@ public abstract class BaseFragment extends Fragment {
         TAG = getClass().getSimpleName();
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (getLayoutId() != 0) {
-            View v = inflater.inflate(getLayoutId(), container, false);
-            return v;
-        } else {
-            return super.onCreateView(inflater, container, savedInstanceState);
-        }
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        mMenu = menu;
     }
 
     public <T> Observable<T> getObservable(Observable<T> observable) {
