@@ -267,7 +267,7 @@ public class Utils {
             ta.recycle();
             return color;
         } catch (Exception e) {
-            LogUtils.logE(Utils.class.getSimpleName(), "Error getting color from attribute", e);
+            e.printStackTrace();
             return 0;
         }
     }
