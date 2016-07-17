@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 ext {
     PUBLISH_GROUP_ID = 'com.nasahapps.android'
     PUBLISH_ARTIFACT_ID = 'androidutils'
-    PUBLISH_VERSION = '0.0.28'
+    PUBLISH_VERSION = '0.0.29'
 }
 
 android {
@@ -15,11 +15,12 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+        consumerProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
+
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
