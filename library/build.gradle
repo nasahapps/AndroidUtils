@@ -7,15 +7,15 @@ ext {
 }
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-        consumerProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        consumerProguardFiles 'proguard-rules.pro'
     }
 
     buildTypes {
@@ -29,9 +29,8 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.google.code.gson:gson:2.7'
-    compile 'com.android.support:design:24.2.0'
+    compile 'com.android.support:design:25.2.0'
     compile 'com.malinskiy:superrecyclerview:1.1.4'
-    compile 'com.netflix.rxjava:rxjava-android:0.20.7'
 }
 
 // To build for jcenter, from the command line do:
