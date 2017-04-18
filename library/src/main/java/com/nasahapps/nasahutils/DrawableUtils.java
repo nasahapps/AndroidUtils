@@ -15,27 +15,9 @@ import android.support.v4.graphics.drawable.DrawableCompat;
 
 public class DrawableUtils {
 
-    public static Drawable tintDrawableForColorIntCompat(Drawable drawable, @ColorInt int color) {
-        Drawable wrappedDrawable = DrawableCompat.wrap(drawable.mutate());
-        wrappedDrawable.setColorFilter(color, PorterDuff.Mode.SRC_IN);
-        return wrappedDrawable;
-    }
-
-    public static Drawable tintDrawableForColorResCompat(Context c, Drawable drawable, @ColorRes int color) {
-        return tintDrawableForColorIntCompat(drawable, ContextCompat.getColor(c, color));
-    }
-
-    public static Drawable tintDrawableForColorResCompat(Context c, @DrawableRes int drawableRes, @ColorRes int color) {
-        return tintDrawableForColorResCompat(c, ContextCompat.getDrawable(c, drawableRes), color);
-    }
-
-    public static Drawable tintDrawableForColorIntCompat(Context c, @DrawableRes int drawableRes, @ColorInt int color) {
-        return tintDrawableForColorIntCompat(ContextCompat.getDrawable(c, drawableRes), color);
-    }
-
     public static Drawable tintDrawableForColorInt(Drawable drawable, @ColorInt int color) {
         Drawable wrappedDrawable = DrawableCompat.wrap(drawable.mutate());
-        DrawableCompat.setTint(wrappedDrawable, color);
+        wrappedDrawable.setColorFilter(color, PorterDuff.Mode.SRC_IN);
         return wrappedDrawable;
     }
 

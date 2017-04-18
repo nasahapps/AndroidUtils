@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.graphics.Point;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -269,6 +270,20 @@ public class Utils {
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
+        }
+    }
+
+    @Nullable
+    public static Drawable getDrawableFromAttribute(Context c, @AttrRes int res) {
+        try {
+            TypedValue tv = new TypedValue();
+            TypedArray ta = c.obtainStyledAttributes(tv.data, new int[]{res});
+            Drawable drawable = ta.getDrawable(0);
+            ta.recycle();
+            return drawable;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
