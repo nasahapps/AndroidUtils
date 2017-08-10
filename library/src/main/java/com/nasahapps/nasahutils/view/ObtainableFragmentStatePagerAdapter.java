@@ -2,15 +2,15 @@ package com.nasahapps.nasahutils.view;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
 import android.view.ViewGroup;
 
-public abstract class ObtainableFragmentPagerAdapter extends FragmentPagerAdapter {
+public abstract class ObtainableFragmentStatePagerAdapter extends FragmentStatePagerAdapter {
 
     SparseArray<Fragment> registeredFragments = new SparseArray<>();
 
-    public ObtainableFragmentPagerAdapter(FragmentManager fm) {
+    public ObtainableFragmentStatePagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
