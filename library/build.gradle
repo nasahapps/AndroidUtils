@@ -20,8 +20,8 @@ android {
 }
 
 dependencies {
-    testApi 'junit:junit:4.12'
-    api 'com.google.code.gson:gson:2.8.1'
-    api 'com.android.support:design:26.0.1'
-    api 'com.malinskiy:superrecyclerview:1.1.4'
+    implementation 'com.google.code.gson:gson:2.8.1'
+    implementation 'com.android.support:design:26.0.1'
+    implementation 'com.malinskiy:superrecyclerview:1.1.4'
+    testImplementation 'junit:junit:4.12'
 }
