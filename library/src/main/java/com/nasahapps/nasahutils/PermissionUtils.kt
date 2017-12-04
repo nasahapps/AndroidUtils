@@ -14,9 +14,6 @@ import android.support.v4.app.FragmentActivity
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
 import android.view.View
-import com.nasahapps.nasahutils.Utils.getColorFromAttribute
-import com.nasahapps.nasahutils.Utils.isAtApiLevel
-import com.nasahapps.nasahutils.Utils.tintButtons
 import java.util.ArrayList
 
 /**
