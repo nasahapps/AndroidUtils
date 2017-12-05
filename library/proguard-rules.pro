@@ -29,5 +29,13 @@
 -keep class sun.misc.Unsafe { *; }
 -keep class com.google.gson.stream.** { *; }
 
+# AppCompat-v7
+-keep public class android.support.v7.internal.widget.** { *; }
+-keep public class android.support.v7.internal.view.menu.** { *; }
+
+-keep public class * extends android.support.v4.view.ActionProvider {
+    public <init>(android.content.Context);
+}
+
 # SuperRecyclerView
 -dontwarn com.malinskiy.superrecyclerview.SwipeDismissRecyclerViewTouchListener*
