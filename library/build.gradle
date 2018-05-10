@@ -2,10 +2,10 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 'android-P'
 
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -20,8 +20,9 @@ android {
 }
 
 dependencies {
-    compile 'com.google.code.gson:gson:2.8.2'
-    compile 'com.android.support:design:27.0.2'
-    compile 'com.malinskiy:superrecyclerview:1.1.4'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api 'com.google.code.gson:gson:2.8.2'
+    implementation 'androidx.fragment:fragment:1.0.0-alpha1'
+    implementation 'com.google.android.material:material:1.0.0-alpha1'
+    api 'com.malinskiy:superrecyclerview:1.1.4'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

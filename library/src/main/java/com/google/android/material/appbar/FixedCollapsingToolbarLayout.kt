@@ -1,4 +1,4 @@
-package android.support.design.widget
+package com.google.android.material.appbar
 
 import android.content.Context
 import android.util.AttributeSet
@@ -10,12 +10,12 @@ import android.util.AttributeSet
 class FixedCollapsingToolbarLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : CollapsingToolbarLayout(context, attrs) {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        val oldInsets = mLastInsets
-        mLastInsets?.let {
-            mLastInsets = it.consumeSystemWindowInsets()
+        val oldInsets = lastInsets
+        lastInsets?.let {
+            lastInsets = it.consumeSystemWindowInsets()
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        mLastInsets = oldInsets
+        lastInsets = oldInsets
     }
 
 }

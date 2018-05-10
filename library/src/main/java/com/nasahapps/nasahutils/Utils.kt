@@ -9,9 +9,9 @@ import android.graphics.Point
 import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.os.Build
-import android.support.annotation.AttrRes
-import android.support.annotation.ColorInt
-import android.support.v7.app.AlertDialog
+import androidx.annotation.AttrRes
+import androidx.annotation.ColorInt
+import androidx.appcompat.app.AlertDialog
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup

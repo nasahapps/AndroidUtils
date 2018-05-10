@@ -1,6 +1,6 @@
 package com.nasahapps.nasahutils.app
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.Menu
 import android.view.MenuInflater
 
