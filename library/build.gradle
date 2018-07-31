@@ -20,9 +20,9 @@ android {
 }
 
 dependencies {
-    api 'com.google.code.gson:gson:2.8.2'
-    implementation 'androidx.fragment:fragment:1.0.0-alpha3'
-    implementation 'com.google.android.material:material:1.0.0-alpha3'
+    api 'com.google.code.gson:gson:2.8.5'
+    implementation 'androidx.fragment:fragment:1.0.0-beta01'
+    implementation 'com.google.android.material:material:1.0.0-beta01'
     api 'com.malinskiy:superrecyclerview:1.1.4'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
