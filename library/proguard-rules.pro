@@ -30,23 +30,23 @@
 -keep class com.google.gson.stream.** { *; }
 
 # Support Design library
--dontwarn android.support.design.**
--keep class android.support.design.** { *; }
--keep interface android.support.design.** { *; }
--keep public class android.support.design.R$* { *; }
+#-dontwarn com.google.android.material.**
+#-keep class android.support.design.** { *; }
+#-keep interface android.support.design.** { *; }
+#-keep public class android.support.design.R$* { *; }
 
 # AppCompat-v7 library
--keep public class android.support.v7.widget.** { *; }
--keep public class android.support.v7.internal.widget.** { *; }
--keep public class android.support.v7.internal.view.menu.** { *; }
-
--keep public class * extends android.support.v4.view.ActionProvider {
-    public <init>(android.content.Context);
-}
+#-keep public class android.support.v7.widget.** { *; }
+#-keep public class android.support.v7.internal.widget.** { *; }
+#-keep public class android.support.v7.internal.view.menu.** { *; }
+#
+#-keep public class * extends android.support.v4.view.ActionProvider {
+#    public <init>(android.content.Context);
+#}
 
 # CardView library
 # http://stackoverflow.com/questions/29679177/cardview-shadow-not-appearing-in-lollipop-after-obfuscate-with-proguard/29698051
--keep class android.support.v7.widget.RoundRectDrawable { *; }
+#-keep class android.support.v7.widget.RoundRectDrawable { *; }
 
 # SuperRecyclerView
--dontwarn com.malinskiy.superrecyclerview.SwipeDismissRecyclerViewTouchListener*
+#-dontwarn com.malinskiy.superrecyclerview.SwipeDismissRecyclerViewTouchListener*
